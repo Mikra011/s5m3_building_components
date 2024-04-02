@@ -40,7 +40,7 @@ describe('Sprint 5 Module 3', () => {
       })
     })
   })
-  describe.only('buildLearnerCard component', () => {
+  describe('buildLearnerCard component', () => {
     let languages = [
       { id: 37, name: 'JavaScript', creator: 'Brendan Eich', year: 1995 },
       { id: 82, name: 'Python', creator: 'Guido van Rossum', year: 1991 },

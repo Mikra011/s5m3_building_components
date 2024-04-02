@@ -84,6 +84,37 @@ function moduleProject3() {
   function buildFooter(footerData) {
     const footer = document.createElement('footer')
 
+    const companyName = document.createElement('p')
+    companyName.textContent = footerData.companyName
+
+    const address = document.createElement('p')
+    address.textContent = footerData.address
+
+    const contactEmail = document.createElement('p')
+    const emailLink = document.createElement('a')
+    emailLink.href = `mailto:${footerData.contactEmail}`
+    emailLink.textContent = footerData.contactEmail
+    contactEmail.appendChild(document.createTextNode('Email: '))
+    contactEmail.appendChild(emailLink)
+
+    const socialMedia = document.createElement('div')
+
+    for (const platform in footerData.socialMedia) {
+      const link = document.createElement('a')
+      link.href = footerData.socialMedia[platform]
+      link.textContent = platform.charAt(0).toUpperCase() + platform.slice(1)
+      socialMedia.appendChild(link)
+    }
+
+    let copyright = document.createElement('div')
+    copyright.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${new Date().getFullYear()}` // a bit of cheating :)
+
+    footer.appendChild(companyName)
+    footer.appendChild(address)
+    footer.appendChild(contactEmail)
+    footer.appendChild(socialMedia)
+    footer.appendChild(copyright)
+
     return footer
   }
 
@@ -100,9 +131,15 @@ function moduleProject3() {
   }))
 
   // 👉 TASK 4 - Clicking on the section should deactivate the active card
-
-  //  ✨ do your magic here
+  document.addEventListener('click', evt => {
+    if (evt.target === document.querySelector('section')) {
+      const learners = document.querySelectorAll('.learner-card')
+      learners.forEach(card => card.classList.remove('active'))
+    }
+  })
 }
+
+// typos are still killing me :)
 
 // ❗ DO NOT CHANGE THIS CODE
 // ❗ DO NOT CHANGE THIS CODE
